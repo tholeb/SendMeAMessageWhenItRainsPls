@@ -1,0 +1,8 @@
+# Ignore tailwind minified file
+src/assets/styles/index.css
+
+# node_modules
+node_modules/
+
+# React build folder
+build/
