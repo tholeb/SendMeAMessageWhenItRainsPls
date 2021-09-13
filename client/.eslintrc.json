@@ -18,9 +18,9 @@
   "extends": [
     "react-app",
     "plugin:react/recommended",
-    "plugin:tailwind/recommended"
+    "plugin:tailwindcss/recommended"
   ],
-  "plugins": ["react", "react-hooks", "jest"],
+  "plugins": ["react", "react-hooks", "jest", "tailwindcss"],
   "rules": {
     "brace-style": ["warn", "stroustrup", { "allowSingleLine": true }],
     "comma-dangle": ["warn", "always-multiline"],
