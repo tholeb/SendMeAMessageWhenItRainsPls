@@ -1,15 +1,17 @@
 import React from 'react';
 
 import Forecast from '../../components/Forecast';
+import Alert from '../../components/Alert';
+import Hero from '../../components/Hero';
 
-const index = () => {
+const Home = () => {
 	return (
-		<div>
-			Home Page
-
+		<>
+			<Hero/>
 			<Forecast/>
-		</div>
+			<Alert/>
+		</>
 	);
 };
 
-export default index;
+export default Home;
