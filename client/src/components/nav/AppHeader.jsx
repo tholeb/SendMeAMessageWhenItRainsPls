@@ -15,13 +15,19 @@ const navLinks = [
 		href: '#',
 		icon: HomeIcon,
 	},
+	{
+		name: 'Home',
+		description: 'Home page of the website',
+		href: '#',
+		icon: HomeIcon,
+	},
 ];
 const AppHeader = () => {
 	return (
-		<Popover className="relative bg-dark">
-			<div className="px-4 mx-auto max-w-12xl sm:px-6">
-				<div className="flex items-center justify-between py-6 border-b-2 border-gray-100 md:justify-start md:space-x-10">
-					<div className="flex justify-start lg:w-0 lg:flex-1">
+		<Popover className="relative">
+			<div className="px-4 sm:px-6 mx-auto">
+				<div className="flex justify-between md:justify-start items-center py-6 md:space-x-10 border-b-2 border-gray-100">
+					<div className="flex lg:flex-1 justify-start lg:w-0">
 						<a href="#!">
 							<span className="sr-only">Workflow</span>
 							<img
@@ -31,8 +37,8 @@ const AppHeader = () => {
 							/>
 						</a>
 					</div>
-					<div className="-my-2 -mr-2 md:hidden">
-						<Popover.Button className="inline-flex items-center justify-center p-2 text-gray-400 bg-white rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+					<div className="md:hidden -my-2 -mr-2">
+						<Popover.Button className="inline-flex justify-center items-center p-2 text-gray-400 hover:text-gray-500 bg-white hover:bg-gray-100 rounded-md focus:ring-2 focus:ring-inset focus:ring-indigo-500 focus:outline-none">
 							<span className="sr-only">Open menu</span>
 							<MenuIcon className="w-6 h-6" aria-hidden="true" />
 						</Popover.Button>
