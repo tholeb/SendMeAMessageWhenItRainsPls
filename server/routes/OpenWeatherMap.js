@@ -4,7 +4,7 @@ module.exports = async function(req, res) {
     try {
       if(req.params.type === undefined) return res.sendStatus(400);
       let resp = await axios.get(
-        `https://api.openweathermap.org/data/2.5/${req.params.type}?q=Nantes,fr&appid=${process.env.OPEN_WEATHER_MAP_TOKEN}&units=metric`,
+        `https://api.openweathermap.org/data/2.5/${req.params.type}?q=Nantes,fr&appid=${process.env.OPEN_WEATHER_MAP_TOKEN}&units=metric&lang=fr`,
         {validateStatus: (status) => status === 200}
       );
       console.log(`Access to '/api/weather/${req.params.type}'`);
