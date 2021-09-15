@@ -1,13 +1,15 @@
 import React from 'react';
 
 const Home = React.lazy(() => import('../views/Home'));
-const Test = React.lazy(() => import('../views/Test'));
+const License = React.lazy(() => import('../views/License'));
+const Error404 = React.lazy(() => import('../views/Error'));
 
 
 export const routes = [
-
 	{ path: '/', exact: true, name: 'Home', component: Home },
-	{ path: '/test', exact: true, name: 'Test', component: Test },
+	{ path: '/license', exact: true, name: 'License', component: License },
+
+	{ path: '*', exact: true, name: 'ErrorPage', props: { type:404 }, component: Error404 },
 ];
 
 
