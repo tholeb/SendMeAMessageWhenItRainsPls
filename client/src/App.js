@@ -5,7 +5,7 @@ import routes from './config/routes';
 const Layout = React.lazy(() => import('./components/Layout'));
 
 const loading = (
-	<svg className="mr-3 w-5 h-5 animate-spin " viewBox="0 0 24 24">
+	<svg className="mr-3 w-5 h-5 animate-spin" viewBox="0 0 24 24">
     Loading
 	</svg>
 );
@@ -16,20 +16,19 @@ function App() {
 		<BrowserRouter>
 			<Suspense fallback={loading}>
 				<Switch>
-					<Layout>
-						{routes.map((route, idx) => {
-							return route.component ? (
-								<Route
-									key={idx}
-									path={route.path}
-									exact={route.exact}
-									render={(props) => (
-										<route.component {...props} />
-									)}
-								/>
-							) : (null);
-						})}
-					</Layout>
+					{routes.map((route, idx) => {
+						return route.component ? (
+							<Route
+								key={idx}
+								path={route.path}
+								exact={route.exact}
+							>
+								<Layout>
+									<route.component {...route.props} />
+								</Layout>
+							</Route>
+						) : (null);
+					})}
 				</Switch>
 			</Suspense>
 		</BrowserRouter>
