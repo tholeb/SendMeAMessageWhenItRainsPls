@@ -6,20 +6,21 @@ import { Popover } from '@headlessui/react';
 import {
 	HomeIcon,
 	MenuIcon,
+	ClipboardListIcon,
 } from '@heroicons/react/outline';
 
 const navLinks = [
 	{
 		name: 'Home',
 		description: 'Home page of the website',
-		href: '#',
+		href: '/',
 		icon: HomeIcon,
 	},
 	{
-		name: 'Home',
-		description: 'Home page of the website',
-		href: '#',
-		icon: HomeIcon,
+		name: 'License',
+		description: 'This App license.',
+		href: 'license',
+		icon: ClipboardListIcon,
 	},
 ];
 const AppHeader = () => {
@@ -44,8 +45,8 @@ const AppHeader = () => {
 						</Popover.Button>
 					</div>
 					<Popover.Group as="nav" className="hidden md:flex space-x-10">
-						{navLinks.map((item) => (
-							<a key={item.name} href={item.href} className="text-base font-medium text-gray-500 hover:text-gray-900">
+						{navLinks.map((item, idx) => (
+							<a key={idx} href={item.href} title={item.description} className="text-base font-medium text-gray-500 hover:text-gray-900">
               				{item.name}
 							</a>
 						))}
