@@ -4,12 +4,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.3.0",
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.4",
+    "cssnano": "^5.0.8",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -18,16 +17,34 @@
     "styled-components": "^5.3.1",
     "web-vitals": "^1.0.1"
   },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "auto-changelog": "^2.3.0",
+    "autoprefixer": "^9.8.6",
+    "chokidar-cli": "^3.0.0",
+    "concurrently": "^6.2.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-tailwindcss": "^1.14.3",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.14"
+  },
   "scripts": {
-    "start": "npm run lint && npm run build:css && react-scripts start",
-    "build": "npm run lint && npm run purge:css && react-scripts build",
-    "test": "react-scripts test",
+    "start": "concurrently \"npm run watch\" \"npm run dev\"",
+    "build": "npm run lint && craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
-    "purge:css": "cross-env NODE_ENV=production postcss src/assets/styles/tailwind.css -o src/assets/styles/output.css",
+    "purge:css": "cross-env NODE_ENV=production npm run build:css",
     "build:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/output.css",
     "watch:css": "postcss src/assets/styles/tailwind.css -o src/assets/styles/output.css -w",
+    "watch": "chokidar \"./src/**/*.{js,jsx,ts,tsx}\" -c \"npm run watch:css\"",
     "changelog": "auto-changelog --starting-version 3.0.0 --commit-limit false --hide-credit",
-    "lint": "eslint src --ext .js,.jsx --fix"
+    "lint": "eslint src --ext .js,.jsx --fix",
+    "dev": "npm run lint && craco start"
   },
   "eslintConfig": {
     "extends": [
@@ -46,18 +63,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "auto-changelog": "^2.3.0",
-    "autoprefixer": "^10.3.4",
-    "cross-env": "^7.0.3",
-    "cssnano": "^5.0.8",
-    "eslint": "^7.32.0",
-    "eslint-plugin-jest": "^24.4.0",
-    "eslint-plugin-react": "^7.25.1",
-    "eslint-plugin-tailwindcss": "^1.14.3",
-    "postcss": "^8.3.6",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.2.15"
   }
 }
