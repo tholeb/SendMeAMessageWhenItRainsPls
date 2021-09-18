@@ -50,7 +50,8 @@ module.exports = async function (req, res) {
           {validateStatus: (status) => status === 200}
         );
         console.log(`Access to '/api/weather/${req.params.type}'`);
-        await res.json(resp.data);
+        const data = {...resp.data, ...{ip:ip}}
+        await res.json(data);
       } catch (error) {
         if (error.response) {
           console.log(error.response.data);
